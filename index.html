@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediCare Hospital</title>
+
+    <style>
+        /* ---------- Global Styles ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f4f7fd;
+            color: #1e293b;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        /* ---------- Header ---------- */
+        .header {
+            width: 100%;
+            min-height: 78px;
+            padding: 16px 45px;
+            background-color: #1268f5;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+
+        nav a {
+            color: #d9e7ff;
+            font-size: 17px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        /* ---------- Hero Section ---------- */
+        .hero {
+            min-height: calc(100vh - 78px);
+            padding: 70px 45px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 45px;
+        }
+
+        .content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .content h2 {
+            color: #1268f5;
+            font-size: clamp(42px, 4.3vw, 72px);
+            line-height: 1.2;
+            margin-bottom: 30px;
+        }
+
+        .content p {
+            color: #64748b;
+            font-size: 17px;
+            line-height: 1.8;
+            margin-bottom: 36px;
+        }
+
+        .appointment {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .btn,
+        .btn2 {
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .btn {
+            background-color: #1268f5;
+            color: white;
+            border: 2px solid #1268f5;
+        }
+
+        .btn:hover {
+            background-color: #0754d1;
+            border-color: #0754d1;
+        }
+
+        .btn2 {
+            background-color: transparent;
+            color: #1268f5;
+            border: 1.5px solid #1268f5;
+        }
+
+        .btn2:hover {
+            background-color: #1268f5;
+            color: white;
+        }
+
+        .hero-image {
+            flex: 1.1;
+            min-width: 0;
+        }
+
+        .hero-image img {
+            display: block;
+            width: 100%;
+            height: 565px;
+            object-fit: cover;
+            border-radius: 30px;
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        /* ---------- General Section Styles ---------- */
+        .page-section {
+            padding: 75px 45px;
+        }
+
+        .section-title {
+            color: #1268f5;
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        /* ---------- Services ---------- */
+        .ourservices {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 25px;
+            background-color: white;
+        }
+
+        .card {
+            padding: 30px 24px;
+            text-align: center;
+            background-color: #f4f7fd;
+            border-radius: 18px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
+        }
+
+        .icon {
+            display: block;
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            margin-bottom: 12px;
+            font-size: 23px;
+        }
+
+        .card p {
+            color: #64748b;
+            margin-bottom: 22px;
+            line-height: 1.6;
+        }
+
+        /* ---------- Doctors ---------- */
+      /* Doctors Section */
+.doctors {
+    padding: 80px 50px;
+    background-color: #f4f7fd;
+}
+
+.doctors > h2 {
+    text-align: center;
+    font-size: 38px;
+    color: #1268f5;
+    margin-bottom: 55px;
+}
+
+/* Doctor Cards Container */
+.doctor-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 55px;
+}
+
+/* Individual Doctor Card */
+.doctor-card {
+    background-color: white;
+    border-radius: 25px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.doctor-card:hover {
+    transform: translateY(-8px);
+}
+
+/* Doctor Image */
+.doctor-card img {
+    width: 100%;
+    height: 405px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Doctor Information */
+.doctor-info {
+    padding: 35px 15px 40px;
+}
+
+.doctor-info h3 {
+    font-size: 27px;
+    font-weight: normal;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.doctor-info p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #111827;
+}
+
+/* Experience Badges */
+.experience {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 7px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+.green {
+    background-color: #198754;
+}
+
+.yellow {
+    background-color: #ffb900;
+}
+
+.red {
+    background-color: #dc3545;
+}
+
+/* Book Now Button */
+.doctor-card .btn {
+    background-color: #1268f5;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 18px 36px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.doctor-card .btn:hover {
+    background-color: #0754d1;
+}
+
+
+        /* ---------- Emergency ---------- */
+        .emergency {
+            text-align: center;
+            background-color: #1268f5;
+            color: white;
+        }
+
+        .emergency h2 {
+            font-size: 34px;
+            margin-bottom: 12px;
+        }
+
+        .emergency p {
+            margin-bottom: 25px;
+            font-size: 18px;
+        }
+
+        .emergency .btn {
+            color: #1268f5;
+            background-color: white;
+            border-color: white;
+        }
+
+        .emergency .btn:hover {
+            background-color: #eaf1ff;
+        }
+
+        /* ---------- Hospital Statistics ---------- */
+        .hospital-statistics {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 20px;
+            background-color: white;
+            text-align: center;
+        }
+
+        .statistic h3 {
+            color: #1268f5;
+            font-size: 38px;
+            margin-bottom: 8px;
+        }
+
+        .statistic p {
+            color: #64748b;
+            font-size: 17px;
+        }
+
+        /* ---------- Appointment Form ---------- */
+        .book-appointment {
+            background-color: #f4f7fd;
+        }
+
+        .appointment-form {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 32px;
+            background-color: white;
+            border-radius: 18px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-field.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-field label {
+            font-weight: bold;
+        }
+
+        .form-field input,
+        .form-field select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .appointment-form .btn {
+            grid-column: 1 / -1;
+            justify-self: start;
+        }
+
+        /* ---------- Footer ---------- */
+        footer {
+            background-color: #10213d;
+            color: white;
+            padding: 45px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1.5fr;
+            gap: 35px;
+            margin-bottom: 30px;
+        }
+
+        footer h2,
+        footer h3 {
+            margin-bottom: 15px;
+        }
+
+        footer p {
+            color: #d0d9e8;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        footer ul {
+            list-style: none;
+        }
+
+        footer li {
+            margin-bottom: 10px;
+        }
+
+        footer a {
+            color: #d0d9e8;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #40516a;
+            padding-top: 20px;
+            margin-bottom: 0;
+        }
+
+        /* ---------- Responsive Layout ---------- */
+        @media (max-width: 900px) {
+            .hero {
+                padding: 50px 30px;
+                gap: 30px;
+            }
+
+            .content h2 {
+                font-size: 45px;
+            }
+
+            .hero-image img {
+                height: 400px;
+            }
+
+            .page-section {
+                padding: 60px 30px;
+            }
+
+            .doctor-card img {
+                height: 220px;
+            }
+        }
+
+        @media (max-width: 650px) {
+            .header {
+                padding: 20px;
+                flex-direction: column;
+            }
+
+            .logo {
+                font-size: 28px;
+            }
+
+            nav {
+                justify-content: center;
+                gap: 16px;
+            }
+
+            nav a {
+                font-size: 15px;
+            }
+
+            .hero {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 45px 20px;
+                gap: 35px;
+            }
+
+            .content h2 {
+                font-size: 42px;
+                margin-bottom: 20px;
+            }
+
+            .content p {
+                font-size: 16px;
+                margin-bottom: 25px;
+            }
+
+            .btn,
+            .btn2 {
+                padding: 13px 20px;
+                font-size: 16px;
+            }
+
+            .hero-image img {
+                height: 300px;
+                border-radius: 20px;
+            }
+
+            .page-section {
+                padding: 50px 20px;
+            }
+
+            .section-title {
+                font-size: 30px;
+            }
+
+            .ourservices,
+            .doctor-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hospital-statistics {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .appointment-form {
+                grid-template-columns: 1fr;
+                padding: 22px;
+            }
+
+            .form-field.full-width,
+            .appointment-form .btn {
+                grid-column: auto;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            footer {
+                padding: 35px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <h1 class="logo">🏥 MediCare</h1>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#doctors">Doctors</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="content">
+                <h2>24/7 Healthcare Services</h2>
+
+                <p>
+                    Providing quality treatment with experienced doctors and
+                    advanced medical facilities. Your health is our priority.
+                </p>
+
+                <div class="appointment">
+                    <a href="#appointment"><button class="btn">Book Appointment</button></a>
+                    <a href="#services"><button class="btn2">Explore Services</button></a>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <!-- Keep your hospital image at this path, or change the path below. -->
+                <img src="./Public/images/Hospital2.jpg" alt="Doctors and nurses providing hospital care">
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="page-section ourservices" id="services">
+            <div class="card">
+                <span class="icon">❤️</span>
+                <h3>Emergency</h3>
+                <p>24-hour emergency care when you need it most.</p>
+                <button class="btn">View More</button>
+            </div>
+
+            <div class="card">
+                <span class="icon">🩺</span>
+                <h3>Pharmacy</h3>
+                <p>Access to medicines and pharmacy services.</p>
+                <button class="btn">View More</button>
+            </div>
+
+            <div class="card">
+                <span class="icon">🚑</span>
+                <h3>Ambulance</h3>
+                <p>Prompt ambulance services for urgent medical needs.</p>
+                <button class="btn">View More</button>
+            </div>
+        </section>
+
+        <!-- Doctors Section -->
+        <section class="doctors" id="doctors">
+    <h2>Our Doctors</h2>
+
+    <div class="doctor-container">
+
+        <!-- Doctor 1 -->
+        <div class="doctor-card">
+            <img src="./Public/images/doctor_aksharaa.jpg" alt="Dr. Akshaya">
+
+            <div class="doctor-info">
+                <h3>
+                    Dr. Madhu
+                    <span class="experience green">10 Years Exp</span>
+                </h3>
+
+                <p>Cardiologist</p>
+
+                <button class="btn">Book Now</button>
+            </div>
+        </div>
+
+        <!-- Doctor 2 -->
+        <div class="doctor-card">
+            <img src="./Public/images/manoj.jpg" alt="Dr. Manoj">
+
+            <div class="doctor-info">
+                <h3>
+                    Dr. Soumya
+                    <span class="experience yellow">8 Years Exp</span>
+                </h3>
+
+                <p>Dentist</p>
+
+                <button class="btn">Book Now</button>
+            </div>
+        </div>
+
+        <!-- Doctor 3 -->
+        <div class="doctor-card">
+            <img src="./Public/images/Bharath.jpg" alt="Dr. Bharath">
+
+            <div class="doctor-info">
+                <h3>
+                    Dr. Satya
+                    <span class="experience red">Senior</span>
+                </h3>
+
+                <p>Neurologist</p>
+
+                <button class="btn">Book Now</button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+        <!-- Emergency Section -->
+        <section class="page-section emergency">
+            <h2>🚨 Emergency Hotline</h2>
+            <p>Available 24/7 for critical care</p>
+            <a href="tel:112"><button class="btn">Call Now</button></a>
+        </section>
+
+        <!-- Hospital Statistics -->
+        <section class="page-section hospital-statistics">
+            <div class="statistic">
+                <h3>120+</h3>
+                <p>Doctors</p>
+            </div>
+
+            <div class="statistic">
+                <h3>500+</h3>
+                <p>Patients</p>
+            </div>
+
+            <div class="statistic">
+                <h3>50+</h3>
+                <p>Departments</p>
+            </div>
+
+            <div class="statistic">
+                <h3>24/7</h3>
+                <p>Emergency</p>
+            </div>
+        </section>
+
+        <!-- Appointment Form -->
+        <section class="page-section book-appointment" id="appointment">
+            <h2 class="section-title">Book an Appointment</h2>
+
+            <form class="appointment-form" action="#" method="post">
+                <div class="form-field">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your name" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Your email" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Your phone number" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="doctor">Select Doctor</label>
+                    <select id="doctor" name="doctor" required>
+                        <option value="">-- Select Doctor --</option>
+                        <option value="dr_maya">Dr. Maya</option>
+                        <option value="dr_sushil">Dr. Sushil</option>
+                        <option value="dr_satya">Dr. Satya</option>
+                    </select>
+                </div>
+
+                <div class="form-field full-width">
+                    <label for="date">Appointment Date</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+
+                <button type="submit" class="btn">Book Appointment</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div>
+                <h2>MediCare Hospital</h2>
+                <p>
+                    Providing quality healthcare services with experienced doctors
+                    and modern medical facilities. Your health is our priority.
+                </p>
+            </div>
+
+            <div>
+                <h3>QUICK LINKS</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#doctors">Doctors</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#appointment">Appointment</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>CONTACT INFO</h3>
+                <p>📍 Hyderabad, Telangana</p>
+                <p>📞 +91 9876543210</p>
+                <p>✉️ medicare@gmail.com</p>
+            </div>
+        </div>
+
+        <p class="copyright">&copy; 2026 MediCare. All rights reserved.</p>
+    </footer>
+</body>
+</html>
